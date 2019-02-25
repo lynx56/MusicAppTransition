@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import AVFoundation
 
 class DetailsViewController: UIViewController {
     
     var interactor: VerticalInteractiveTransition?
+    var audioPlayer: AVAudioPlayer?
 
     @IBOutlet weak var chevronView: ChevronView!
     override func viewDidLoad() {
@@ -20,6 +22,10 @@ class DetailsViewController: UIViewController {
         
         interactor?.subscribers.removeAll()
         interactor?.subscribers.append(chevronView)
+        if let soundUrl = Bundle.main.url(forResource: "sound", withExtension: "wav") {
+            audioPlayer = try? AVAudioPlayer(contentsOf: soundUrl)
+            audioPlayer?.play()
+        }
         // Do any additional setup after loading the view.
     }
 

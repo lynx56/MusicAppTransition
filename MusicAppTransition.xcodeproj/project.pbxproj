@@ -20,6 +20,7 @@
 		BF4A777B21452C56008301CC /* InteractiveTransitionDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A777A21452C56008301CC /* InteractiveTransitionDelegateProtocol.swift */; };
 		BF4A777D21452EE8008301CC /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A777C21452EE8008301CC /* DetailsViewController.swift */; };
 		BF96BEA921455196003382F9 /* ChevronView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF96BEA821455196003382F9 /* ChevronView.swift */; };
+		BF9D1FE422246E7800795031 /* sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = BF9D1FE322246E7800795031 /* sound.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		BF4A777A21452C56008301CC /* InteractiveTransitionDelegateProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveTransitionDelegateProtocol.swift; sourceTree = "<group>"; };
 		BF4A777C21452EE8008301CC /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		BF96BEA821455196003382F9 /* ChevronView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChevronView.swift; sourceTree = "<group>"; };
+		BF9D1FE322246E7800795031 /* sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sound.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 				BF4A776121452A4D008301CC /* Main.storyboard */,
 				BF4A776421452A4F008301CC /* Assets.xcassets */,
 				BF4A776621452A4F008301CC /* LaunchScreen.storyboard */,
+				BF9D1FE322246E7800795031 /* sound.wav */,
 				BF4A776921452A4F008301CC /* Info.plist */,
 				BF96BEA821455196003382F9 /* ChevronView.swift */,
 			);
@@ -157,6 +160,7 @@
 				BF4A776821452A4F008301CC /* LaunchScreen.storyboard in Resources */,
 				BF4A776521452A4F008301CC /* Assets.xcassets in Resources */,
 				BF4A776321452A4D008301CC /* Main.storyboard in Resources */,
+				BF9D1FE422246E7800795031 /* sound.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

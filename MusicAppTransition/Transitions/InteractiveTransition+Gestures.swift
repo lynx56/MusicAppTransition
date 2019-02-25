@@ -12,7 +12,8 @@ extension VerticalInteractiveTransition{
     func update(for gesture: UIPanGestureRecognizer, in view: UIView, andBeginAction action: (()->Void)?){
         let translation = gesture.translation(in: view)
         
-        let progress = abs(translation.y/view.bounds.height)
+        var progress: CGFloat = abs(translation.y/(view.bounds.height/3))
+        progress = min(max(progress, 0.01), 0.99)
         switch gesture.state {
         case .began:
             action?()

@@ -10,15 +10,21 @@ import UIKit
 
 class VerticalInteractiveTransition: UIPercentDrivenInteractiveTransition{
     var maxHeight: CGFloat = 0
+    var percent: CGFloat = 0
     var shouldFinish: Bool{
-        return self.percentComplete > 0.3
+        return percent > 0.3
+    }
+    
+    override init() {
+        super.init()
+        wantsInteractiveStart = false
     }
     
     var subscribers: [InteractiveViewDelegate] = []
     
     override func update(_ percentComplete: CGFloat) {
+        percent = percentComplete
         super.update(percentComplete)
-        
         subscribers.forEach { $0.update(percentComplete) }
     }
     
