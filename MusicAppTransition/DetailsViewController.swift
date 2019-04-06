@@ -10,22 +10,24 @@ import UIKit
 import AVFoundation
 
 class DetailsViewController: UIViewController {
-    
-    var interactor: VerticalInteractiveTransition?
     var audioPlayer: AVAudioPlayer?
 
-    @IBOutlet weak var chevronView: ChevronView!
+  //  @IBOutlet weak var chevronView: ChevronView!
+    let shared = TransitionDelegate()
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        transitioningDelegate = shared
+        shared.dismissAnimator.wantsInteractiveStart = true
+        shared.presentAnimator.wantsInteractiveStart = false
         self.view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(pan)))
-        
-        interactor?.subscribers.removeAll()
-        interactor?.subscribers.append(chevronView)
+
+    /*
         if let soundUrl = Bundle.main.url(forResource: "sound", withExtension: "wav") {
             audioPlayer = try? AVAudioPlayer(contentsOf: soundUrl)
             audioPlayer?.play()
         }
+ */
         // Do any additional setup after loading the view.
     }
 
@@ -35,7 +37,7 @@ class DetailsViewController: UIViewController {
     }
     
     @objc func pan(_ gesture: UIPanGestureRecognizer){
-        interactor?.update(for: gesture, in: self.view, andBeginAction: { [unowned self] in
+        shared.dismissAnimator.update(for: gesture, in: self.view, andBeginAction: {
             self.dismiss(animated: true, completion: nil)
         })
     }

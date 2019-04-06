@@ -8,25 +8,27 @@
 
 import UIKit
 
-class InteractiveTransitionDelegate: NSObject, InteractiveTransitionDelegateProtocol{
-    let interactiveTransition = VerticalInteractiveTransition()
-  
+class TransitionDelegate: NSObject, UIViewControllerTransitioningDelegate{
+    lazy var presentAnimator = RevealAnimator()
+    lazy var dismissAnimator = DismissAnimator()
+
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        let animator = PresentAnimator()
-        animator.maxHeight = interactiveTransition.maxHeight
-        
-        return animator
+        presentAnimator.interactive = false
+        return presentAnimator
     }
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return DismissAnimator()
+        dismissAnimator.completionSpeed = 1
+        return dismissAnimator
     }
     
     func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return interactiveTransition
+         dismissAnimator.completionSpeed = 1
+        return dismissAnimator
     }
     
     func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return interactiveTransition
+        presentAnimator.interactive = false
+        return presentAnimator
     }
 }

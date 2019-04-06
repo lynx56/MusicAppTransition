@@ -10,8 +10,6 @@ import UIKit
 
 class MainViewController: UIViewController {
 
-    var interactiveTransitionDelegate: InteractiveTransitionDelegateProtocol = InteractiveTransitionDelegate()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -22,13 +20,13 @@ class MainViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    let shared = TransitionDelegate()
     @IBAction func showMrMeeseeks(_ sender: Any) {
-        self.interactiveTransitionDelegate.interactiveTransition.maxHeight = UIScreen.main.bounds.height - 70
         let details = storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
-        details.transitioningDelegate = interactiveTransitionDelegate
-        details.interactor = interactiveTransitionDelegate.interactiveTransition
+        shared.presentAnimator.wantsInteractiveStart = false
+
+        details.transitioningDelegate = shared
         self.present(details, animated: true, completion: nil)
     }
-    
 }
 

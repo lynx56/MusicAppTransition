@@ -7,23 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF05522F224EA38100E3020E /* PresentTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF05522E224EA38100E3020E /* PresentTransition.swift */; };
+		BF16320122529D20008A7EEE /* DismissAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF16320022529D20008A7EEE /* DismissAnimator.swift */; };
 		BF4A775E21452A4D008301CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A775D21452A4D008301CC /* AppDelegate.swift */; };
 		BF4A776021452A4D008301CC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A775F21452A4D008301CC /* MainViewController.swift */; };
 		BF4A776321452A4D008301CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF4A776121452A4D008301CC /* Main.storyboard */; };
 		BF4A776521452A4F008301CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF4A776421452A4F008301CC /* Assets.xcassets */; };
 		BF4A776821452A4F008301CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF4A776621452A4F008301CC /* LaunchScreen.storyboard */; };
 		BF4A777021452A75008301CC /* InteractiveTransition+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A776F21452A75008301CC /* InteractiveTransition+Gestures.swift */; };
-		BF4A777221452AC4008301CC /* VerticalInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A777121452AC4008301CC /* VerticalInteractiveTransition.swift */; };
 		BF4A777421452B27008301CC /* PresentAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A777321452B27008301CC /* PresentAnimator.swift */; };
-		BF4A777721452BFF008301CC /* DismissAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A777621452BFF008301CC /* DismissAnimator.swift */; };
-		BF4A777921452C30008301CC /* InteractiveTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A777821452C30008301CC /* InteractiveTransitionDelegate.swift */; };
-		BF4A777B21452C56008301CC /* InteractiveTransitionDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A777A21452C56008301CC /* InteractiveTransitionDelegateProtocol.swift */; };
+		BF4A777921452C30008301CC /* TransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A777821452C30008301CC /* TransitionDelegate.swift */; };
 		BF4A777D21452EE8008301CC /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A777C21452EE8008301CC /* DetailsViewController.swift */; };
 		BF96BEA921455196003382F9 /* ChevronView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF96BEA821455196003382F9 /* ChevronView.swift */; };
 		BF9D1FE422246E7800795031 /* sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = BF9D1FE322246E7800795031 /* sound.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BF05522E224EA38100E3020E /* PresentTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentTransition.swift; sourceTree = "<group>"; };
+		BF16320022529D20008A7EEE /* DismissAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissAnimator.swift; sourceTree = "<group>"; };
 		BF4A775A21452A4D008301CC /* MusicAppTransition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicAppTransition.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF4A775D21452A4D008301CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF4A775F21452A4D008301CC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -32,11 +33,8 @@
 		BF4A776721452A4F008301CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF4A776921452A4F008301CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF4A776F21452A75008301CC /* InteractiveTransition+Gestures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "InteractiveTransition+Gestures.swift"; sourceTree = "<group>"; };
-		BF4A777121452AC4008301CC /* VerticalInteractiveTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalInteractiveTransition.swift; sourceTree = "<group>"; };
 		BF4A777321452B27008301CC /* PresentAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentAnimator.swift; sourceTree = "<group>"; };
-		BF4A777621452BFF008301CC /* DismissAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissAnimator.swift; sourceTree = "<group>"; };
-		BF4A777821452C30008301CC /* InteractiveTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveTransitionDelegate.swift; sourceTree = "<group>"; };
-		BF4A777A21452C56008301CC /* InteractiveTransitionDelegateProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveTransitionDelegateProtocol.swift; sourceTree = "<group>"; };
+		BF4A777821452C30008301CC /* TransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionDelegate.swift; sourceTree = "<group>"; };
 		BF4A777C21452EE8008301CC /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		BF96BEA821455196003382F9 /* ChevronView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChevronView.swift; sourceTree = "<group>"; };
 		BF9D1FE322246E7800795031 /* sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sound.wav; sourceTree = "<group>"; };
@@ -90,11 +88,10 @@
 			isa = PBXGroup;
 			children = (
 				BF4A776F21452A75008301CC /* InteractiveTransition+Gestures.swift */,
-				BF4A777121452AC4008301CC /* VerticalInteractiveTransition.swift */,
 				BF4A777321452B27008301CC /* PresentAnimator.swift */,
-				BF4A777621452BFF008301CC /* DismissAnimator.swift */,
-				BF4A777821452C30008301CC /* InteractiveTransitionDelegate.swift */,
-				BF4A777A21452C56008301CC /* InteractiveTransitionDelegateProtocol.swift */,
+				BF16320022529D20008A7EEE /* DismissAnimator.swift */,
+				BF4A777821452C30008301CC /* TransitionDelegate.swift */,
+				BF05522E224EA38100E3020E /* PresentTransition.swift */,
 			);
 			path = Transitions;
 			sourceTree = "<group>";
@@ -171,15 +168,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF4A777221452AC4008301CC /* VerticalInteractiveTransition.swift in Sources */,
-				BF4A777921452C30008301CC /* InteractiveTransitionDelegate.swift in Sources */,
+				BF4A777921452C30008301CC /* TransitionDelegate.swift in Sources */,
 				BF4A777D21452EE8008301CC /* DetailsViewController.swift in Sources */,
 				BF4A777021452A75008301CC /* InteractiveTransition+Gestures.swift in Sources */,
-				BF4A777721452BFF008301CC /* DismissAnimator.swift in Sources */,
 				BF4A776021452A4D008301CC /* MainViewController.swift in Sources */,
 				BF96BEA921455196003382F9 /* ChevronView.swift in Sources */,
-				BF4A777B21452C56008301CC /* InteractiveTransitionDelegateProtocol.swift in Sources */,
 				BF4A777421452B27008301CC /* PresentAnimator.swift in Sources */,
+				BF05522F224EA38100E3020E /* PresentTransition.swift in Sources */,
+				BF16320122529D20008A7EEE /* DismissAnimator.swift in Sources */,
 				BF4A775E21452A4D008301CC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,99 +8,72 @@
 
 import UIKit
 
-class ChevronView: UIView, InteractiveViewDelegate{
+class ChevronView: UIView{
     class Settings {
         static var width: CGFloat = 4.67
         static var angleCoefficient: CGFloat = 42.5714286
         static var color = UIColor.lightGray
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        commonInit()
+    override func draw(_ rect: CGRect) {
+        backgroundColor = .clear
+        let path = preparePath(for: .up, in: rect)
+        path.stroke()
+        path.fill()
     }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        commonInit()
-    }
-    
-    var color: UIColor = Settings.color
-    var width = Settings.width
-
-    
-    func commonInit(){
-        self.isUserInteractionEnabled = false
-    }
-    
-    var leftView: UIView?
-    var rightView: UIView?
-    override func layoutSubviews() {
-        super.layoutSubviews()
+ 
+    private func preparePath(for direction: Direction, in rect: CGRect) -> UIBezierPath {
+        let path = UIBezierPath()
+        let lineRect = CGRect(x: rect.minX + Settings.width/2,
+                              y: rect.minY + Settings.width/2,
+                              width: rect.width - Settings.width,
+                              height: rect.height - Settings.width)
         
-        if leftView == nil {
-            leftView = UIView(frame: CGRect.zero)
-            leftView!.backgroundColor = color
-            rightView = UIView(frame: CGRect.zero)
-            rightView!.backgroundColor = color
-            
-            addSubview(leftView!)
-            addSubview(rightView!)
+        
+        switch  direction {
+        case .neutral:
+            path.move(to: CGPoint(x: lineRect.minX, y: lineRect.midY))
+            path.addLine(to: CGPoint(x: lineRect.maxX, y: lineRect.midY))
+        case .down:
+            path.move(to: CGPoint(x: lineRect.minX, y: lineRect.midY))
+            path.addLine(to: CGPoint(x: lineRect.midX, y: lineRect.minY))
+            path.move(to: CGPoint(x: lineRect.midX, y: lineRect.minY))
+            path.addLine(to: CGPoint(x: lineRect.maxX, y: lineRect.midY))
+        case .up:
+            path.move(to: CGPoint(x: lineRect.minX, y: lineRect.midY))
+            path.addLine(to: CGPoint(x: lineRect.midX, y: lineRect.maxY))
+            path.move(to: CGPoint(x: lineRect.midX, y: lineRect.maxY))
+            path.addLine(to: CGPoint(x: lineRect.maxX, y: lineRect.midY))
         }
         
-        var leftFrame = CGRect.zero
-        var rightFrame = CGRect.zero
-        
-        let (slice, reminder) = bounds.divided(atDistance: bounds.size.width * 0.5, from: .minXEdge)
-        leftFrame = slice
-        rightFrame = reminder
-        
-        leftFrame.size.height = width
-        rightFrame.size.height = leftFrame.size.height
-        
-        var angle: CGFloat = bounds.size.height / bounds.size.width * Settings.angleCoefficient
-        var dx: CGFloat = leftFrame.size.width * (1 - cos(angle * .pi / 180.0)) / 2.0
-        
-        leftFrame = leftFrame.offsetBy(dx: width / 2 + dx - 0.75, dy: 0.0)
-        rightFrame = rightFrame.offsetBy(dx: -(width / 2) - dx + 0.75, dy: 0.0)
-        
-        leftView!.bounds = leftFrame
-        rightView!.bounds = rightFrame
-        leftView!.center = CGPoint(x: leftFrame.midX, y: bounds.midY)
-        
-        leftView!.center = CGPoint(x: leftFrame.midX, y: bounds.midY)
-        rightView!.center = CGPoint(x: rightFrame.midX, y: bounds.midY)
-        
-        leftView!.layer.cornerRadius = width / 2.0
-        rightView!.layer.cornerRadius = width / 2.0
-        
-        if isConfigured == false{
-            update(0)
-            isConfigured = true
-        }
+        path.lineWidth = Settings.width
+        path.lineCapStyle = .round
+        Settings.color.setStroke()
+        Settings.color.setFill()
+        return path
     }
     
-    var isConfigured: Bool = false
-    var x: CGFloat = 0.1
-    
-    func cancel() {
-        update(0)
+    public func cancel() -> CABasicAnimation {
+        let animation = CABasicAnimation(keyPath: "path")
+        animation.toValue = preparePath(for: .up, in: self.bounds)
+        return animation
     }
     
-    func update(_ percentComplete: CGFloat) {
-        var k: CGFloat
-        if percentComplete >= x{
-            k = 0
-        }else if percentComplete == 0{
-            k = -1
-        }else{
-            k = -1 + percentComplete/x
-        }
-        
-        let angle = self.bounds.size.height / self.bounds.size.width * Settings.angleCoefficient
-        
-        self.leftView?.transform = CGAffineTransform(rotationAngle: -k * angle * CGFloat.pi / 180.0);
-        self.rightView?.transform = CGAffineTransform(rotationAngle: k * angle * CGFloat.pi / 180.0);
-        
+    public func finish(for direction: Direction) -> CABasicAnimation {
+        let animation = CABasicAnimation(keyPath: "path")
+        animation.toValue = preparePath(for: direction == .up ? .down : .up, in: self.bounds)
+        return animation
+    }
+    
+    public func inMid() -> CABasicAnimation {
+        let animation = CABasicAnimation(keyPath: "path")
+        animation.toValue = preparePath(for: .neutral, in: self.bounds)
+        return animation
+    }
+    
+    enum Direction {
+        case up
+        case down
+        case neutral
     }
 }

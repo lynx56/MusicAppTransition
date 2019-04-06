@@ -8,11 +8,14 @@
 
 import UIKit
 
-extension VerticalInteractiveTransition{
+extension UIPercentDrivenInteractiveTransition{
     func update(for gesture: UIPanGestureRecognizer, in view: UIView, andBeginAction action: (()->Void)?){
+        guard let view = gesture.view?.superview
+            else { assertionFailure("Invalid view"); return }
+        
         let translation = gesture.translation(in: view)
         
-        var progress: CGFloat = abs(translation.y/(view.bounds.height/3))
+        var progress: CGFloat = translation.y/view.bounds.height
         progress = min(max(progress, 0.01), 0.99)
         switch gesture.state {
         case .began:
@@ -31,4 +34,8 @@ extension VerticalInteractiveTransition{
             break
         }
     }
+}
+
+extension UIPercentDrivenInteractiveTransition {
+    var shouldFinish: Bool { return percentComplete > 0.1 }
 }
