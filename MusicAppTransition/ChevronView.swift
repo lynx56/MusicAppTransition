@@ -15,14 +15,33 @@ class ChevronView: UIView{
         static var color = UIColor.lightGray
     }
     
-    override func draw(_ rect: CGRect) {
-        backgroundColor = .clear
-        let path = preparePath(for: .up, in: rect)
-        path.stroke()
-        path.fill()
+    var direction: Direction = .up {
+        didSet {
+            animatableLayer.path = ChevronView.preparePath(for: direction, in: bounds).cgPath
+        }
     }
- 
-    private func preparePath(for direction: Direction, in rect: CGRect) -> UIBezierPath {
+    let animatableLayer = CAShapeLayer()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    func setup() {
+        backgroundColor = .clear
+        animatableLayer.path = ChevronView.preparePath(for: direction, in: bounds).cgPath
+        animatableLayer.strokeColor = Settings.color.cgColor
+        animatableLayer.fillColor = Settings.color.cgColor
+        animatableLayer.lineWidth = Settings.width
+        animatableLayer.lineCap = kCALineCapRound
+        self.layer.addSublayer(animatableLayer)
+    }
+    
+    private static func preparePath(for direction: Direction, in rect: CGRect) -> UIBezierPath {
         let path = UIBezierPath()
         let lineRect = CGRect(x: rect.minX + Settings.width/2,
                               y: rect.minY + Settings.width/2,
@@ -46,29 +65,28 @@ class ChevronView: UIView{
             path.addLine(to: CGPoint(x: lineRect.maxX, y: lineRect.midY))
         }
         
-        path.lineWidth = Settings.width
-        path.lineCapStyle = .round
-        Settings.color.setStroke()
-        Settings.color.setFill()
         return path
     }
     
-    public func cancel() -> CABasicAnimation {
-        let animation = CABasicAnimation(keyPath: "path")
-        animation.toValue = preparePath(for: .up, in: self.bounds)
-        return animation
+    public var cancelAnimation: () -> Void {
+        return { [weak self] in
+            guard let self = self else { return }
+            let animation = CABasicAnimation(keyPath: "path")
+            animation.toValue = ChevronView.preparePath(for: .up, in: self.bounds)
+            self.animatableLayer.add(animation, forKey: nil)
+        }
     }
     
-    public func finish(for direction: Direction) -> CABasicAnimation {
-        let animation = CABasicAnimation(keyPath: "path")
-        animation.toValue = preparePath(for: direction == .up ? .down : .up, in: self.bounds)
-        return animation
-    }
-    
-    public func inMid() -> CABasicAnimation {
-        let animation = CABasicAnimation(keyPath: "path")
-        animation.toValue = preparePath(for: .neutral, in: self.bounds)
-        return animation
+    public func finishAnimation() -> () -> Void {
+        return { [weak self] in
+            guard let self = self else { return }
+            let animation = CABasicAnimation(keyPath: "path")
+            animation.fromValue = ChevronView.preparePath(for: self.direction, in: self.bounds).cgPath
+            animation.toValue = ChevronView.preparePath(for: self.direction == .up ? .down : .up, in: self.bounds).cgPath
+            animation.duration = 0.2
+            self.animatableLayer.add(animation, forKey: nil)
+            self.direction = self.direction == .up ? .down : .up
+        }
     }
     
     enum Direction {

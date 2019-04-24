@@ -20,6 +20,7 @@ extension UIPercentDrivenInteractiveTransition{
         switch gesture.state {
         case .began:
             action?()
+            self.update(progress)
         case .changed:
             self.update(progress)
         case .cancelled:
@@ -37,5 +38,5 @@ extension UIPercentDrivenInteractiveTransition{
 }
 
 extension UIPercentDrivenInteractiveTransition {
-    var shouldFinish: Bool { return percentComplete > 0.1 }
+    var shouldFinish: Bool { return percentComplete > 0.5 }
 }
