@@ -19,20 +19,17 @@ class ChevronView: UIView{
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addLayers()
+        backgroundColor = .clear
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        addLayers()
+        backgroundColor = .clear
+        setupLayers()
     }
    
-    func addLayers() {
+    func setupLayers() {
         backgroundColor = .clear
-        updateLayers()
-    }
-    
-    func updateLayers() {
         layer.sublayers?.removeAll()
         leftWing = layer(from: CGPoint(x: layerRect.minX, y: layerRect.midY),
                          to: CGPoint(x: layerRect.midX, y: layerRect.midY))
@@ -52,8 +49,8 @@ class ChevronView: UIView{
     private var angle: CGFloat {
         let w = layerRect.width
         let h = layerRect.height/2
-        
-        return atan(sqrt(h*h + 0.25*w*w)/w)
+    
+        return atan(sqrt(h.² + 0.25 * w.²) / w)
     }
     
     private func layer(from startPoint: CGPoint, to endPoint: CGPoint) -> CAShapeLayer {
@@ -96,5 +93,11 @@ class ChevronView: UIView{
             leftWing.setAffineTransform(CGAffineTransform(rotationAngle: -angle))
             rightWing.setAffineTransform(CGAffineTransform(rotationAngle: angle))
         }
+    }
+}
+
+extension CGFloat {
+    var ²: CGFloat {
+        return self * self
     }
 }

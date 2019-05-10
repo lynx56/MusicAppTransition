@@ -9,17 +9,18 @@
 import UIKit
 
 class ChevronViewController: UIViewController {
-    private let _contentController: UIViewController
-    private var present: UpTransition
+    private let contentController: UIViewController
+    private let backgroundColor: UIColor
+    private let transition = UpTransition()
+    private let chevronView: ChevronView = ChevronView(frame: .zero)
     private var wantsInteractive = false
     private var gesture: UIPanGestureRecognizer?
-    private var chevronView: ChevronView
     
-    init(_ contentController: UIViewController) {
-        _contentController = contentController
-        present = UpTransition()
-        chevronView = ChevronView(frame: .zero)
+    init(_ contentController: UIViewController, withBackgroundColor backgroundColor: UIColor = .white) {
+        self.contentController = contentController
+        self.backgroundColor = backgroundColor
         super.init(nibName: nil, bundle: nil)
+        
         modalPresentationStyle = .custom
         transitioningDelegate = self
     }
@@ -31,14 +32,13 @@ class ChevronViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
-        view.backgroundColor = #colorLiteral(red: 0.4902378321, green: 0.8693413138, blue: 0.9952403903, alpha: 1)
-        
+        view.backgroundColor = backgroundColor
         gesture = UIPanGestureRecognizer(target: self, action: #selector(pan))
         view.addGestureRecognizer(gesture!)
     }
     
     private func setupLayout() {
-        addChildViewController(_contentController)
+        addChildViewController(contentController)
         let margins = view.layoutMarginsGuide
         
         view.addSubview(chevronView)
@@ -48,7 +48,7 @@ class ChevronViewController: UIViewController {
         chevronView.widthAnchor.constraint(equalToConstant: 37).isActive = true
         chevronView.heightAnchor.constraint(equalToConstant: 12).isActive = true
         
-        let contentView: UIView = _contentController.view
+        let contentView: UIView = contentController.view
         view.addSubview(contentView)
         contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.topAnchor.constraint(equalTo: chevronView.bottomAnchor).isActive = true
@@ -56,12 +56,12 @@ class ChevronViewController: UIViewController {
         contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
-        _contentController.didMove(toParentViewController: self)
+        contentController.didMove(toParentViewController: self)
         view.setNeedsLayout()
     }
     
     override func viewDidLayoutSubviews() {
-        chevronView.updateLayers()
+        chevronView.setupLayers()
         chevronView.down()
     }
     
@@ -82,9 +82,9 @@ extension ChevronViewController: UIViewControllerTransitioningDelegate {
     }
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        present.state = .presentWithAnimations(Animations(direct: self.chevronView.down, cancel: self.chevronView.neutral))
-        present.animator = nil
-        return present
+        transition.state = .presentWithAnimations(Animations(direct: self.chevronView.down, cancel: self.chevronView.neutral))
+        transition.animator = nil
+        return transition
     }
     
     func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
@@ -92,9 +92,9 @@ extension ChevronViewController: UIViewControllerTransitioningDelegate {
     }
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        present.state = .dismissWithAnimations(Animations(direct: self.chevronView.neutral, cancel: self.chevronView.down))
-        present.animator = nil
-        return present
+        transition.state = .dismissWithAnimations(Animations(direct: self.chevronView.neutral, cancel: self.chevronView.down))
+        transition.animator = nil
+        return transition
     }
     
     func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
@@ -102,7 +102,7 @@ extension ChevronViewController: UIViewControllerTransitioningDelegate {
             return nil
         }
         
-        present.panGestureRecognizer = gesture
-        return present
+        transition.panGestureRecognizer = gesture
+        return transition
     }
 }
