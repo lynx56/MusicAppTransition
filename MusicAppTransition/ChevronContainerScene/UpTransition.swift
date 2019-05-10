@@ -25,7 +25,6 @@ class UpTransition: NSObject, UIViewControllerInteractiveTransitioning, UIViewCo
             panGestureRecognizer?.addTarget(self, action: #selector(handlePan))
         }
     }
-    var originView : UIView
     var animator : UIViewPropertyAnimator?
     
     enum State {
@@ -37,13 +36,10 @@ class UpTransition: NSObject, UIViewControllerInteractiveTransitioning, UIViewCo
     
     var state = State.present
     
-    init(originView : UIView) {
-        self.originView = originView
-    }
-    
     @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
-        let translation = gesture.translation(in: originView)
-        var progress: CGFloat = abs(translation.y/originView.bounds.height)
+        let view = gesture.view!
+        let translation = gesture.translation(in: view)
+        var progress: CGFloat = abs(translation.y/view.bounds.height)
         progress = min(max(progress, 0.01), 0.99)
         
         self.animator?.fractionComplete = progress

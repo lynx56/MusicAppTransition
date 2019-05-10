@@ -14,7 +14,8 @@ class MainViewController: UIViewController {
     
     @IBAction func showMrMeeseeks(_ sender: Any) {
         let details = storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
-        self.present(details, animated: true, completion: nil)
+        let detailsWithChevronController = ChevronViewController(details)
+        self.present(detailsWithChevronController, animated: true, completion: nil)
     }
 }
 

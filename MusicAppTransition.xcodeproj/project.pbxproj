@@ -16,6 +16,7 @@
 		BF53812722682F0900569F4A /* PresentaitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF53812622682F0900569F4A /* PresentaitionController.swift */; };
 		BF96BEA921455196003382F9 /* ChevronView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF96BEA821455196003382F9 /* ChevronView.swift */; };
 		BF9D1FE422246E7800795031 /* sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = BF9D1FE322246E7800795031 /* sound.wav */; };
+		BFD03FCC228606450062AD4C /* ChevronViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD03FCB228606450062AD4C /* ChevronViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		BF53812622682F0900569F4A /* PresentaitionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentaitionController.swift; sourceTree = "<group>"; };
 		BF96BEA821455196003382F9 /* ChevronView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChevronView.swift; sourceTree = "<group>"; };
 		BF9D1FE322246E7800795031 /* sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sound.wav; sourceTree = "<group>"; };
+		BFD03FCB228606450062AD4C /* ChevronViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChevronViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 			children = (
 				BF7A2C37228583A7007E7E87 /* MainScene */,
 				BF7A2C38228583C2007E7E87 /* ModalScene */,
+				BFD03FCD228606B60062AD4C /* ChevronContainerScene */,
 				BF4A775D21452A4D008301CC /* AppDelegate.swift */,
 				BF4A776121452A4D008301CC /* Main.storyboard */,
 				BF4A776421452A4F008301CC /* Assets.xcassets */,
@@ -84,12 +87,20 @@
 			isa = PBXGroup;
 			children = (
 				BF4A777C21452EE8008301CC /* DetailsViewController.swift */,
-				BF96BEA821455196003382F9 /* ChevronView.swift */,
-				BF53812622682F0900569F4A /* PresentaitionController.swift */,
-				BF05522E224EA38100E3020E /* UpTransition.swift */,
 				BF9D1FE322246E7800795031 /* sound.wav */,
 			);
 			path = ModalScene;
+			sourceTree = "<group>";
+		};
+		BFD03FCD228606B60062AD4C /* ChevronContainerScene */ = {
+			isa = PBXGroup;
+			children = (
+				BF05522E224EA38100E3020E /* UpTransition.swift */,
+				BF96BEA821455196003382F9 /* ChevronView.swift */,
+				BFD03FCB228606450062AD4C /* ChevronViewController.swift */,
+				BF53812622682F0900569F4A /* PresentaitionController.swift */,
+			);
+			path = ChevronContainerScene;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,6 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF4A777D21452EE8008301CC /* DetailsViewController.swift in Sources */,
+				BFD03FCC228606450062AD4C /* ChevronViewController.swift in Sources */,
 				BF53812722682F0900569F4A /* PresentaitionController.swift in Sources */,
 				BF4A776021452A4D008301CC /* MainViewController.swift in Sources */,
 				BF96BEA921455196003382F9 /* ChevronView.swift in Sources */,

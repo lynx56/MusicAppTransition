@@ -96,7 +96,7 @@
                         <viewLayoutGuide key="safeArea" id="5ed-nU-sci"/>
                     </view>
                     <connections>
-                        <outlet property="chevronView" destination="bym-8k-rtE" id="K9n-T0-wNo"/>
+                        <outlet property="ch" destination="bym-8k-rtE" id="DuH-F7-pi8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GHi-H8-jkc" userLabel="First Responder" sceneMemberID="firstResponder"/>
