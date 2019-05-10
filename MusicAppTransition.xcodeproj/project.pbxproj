@@ -7,33 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BF05522F224EA38100E3020E /* PresentTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF05522E224EA38100E3020E /* PresentTransition.swift */; };
+		BF05522F224EA38100E3020E /* UpTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF05522E224EA38100E3020E /* UpTransition.swift */; };
 		BF4A775E21452A4D008301CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A775D21452A4D008301CC /* AppDelegate.swift */; };
 		BF4A776021452A4D008301CC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A775F21452A4D008301CC /* MainViewController.swift */; };
 		BF4A776321452A4D008301CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF4A776121452A4D008301CC /* Main.storyboard */; };
 		BF4A776521452A4F008301CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF4A776421452A4F008301CC /* Assets.xcassets */; };
-		BF4A776821452A4F008301CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF4A776621452A4F008301CC /* LaunchScreen.storyboard */; };
-		BF4A777021452A75008301CC /* InteractiveTransition+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A776F21452A75008301CC /* InteractiveTransition+Gestures.swift */; };
 		BF4A777D21452EE8008301CC /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A777C21452EE8008301CC /* DetailsViewController.swift */; };
 		BF53812722682F0900569F4A /* PresentaitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF53812622682F0900569F4A /* PresentaitionController.swift */; };
-		BF8F97702270DFE900436C3A /* Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8F976F2270DFE900436C3A /* Driver.swift */; };
 		BF96BEA921455196003382F9 /* ChevronView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF96BEA821455196003382F9 /* ChevronView.swift */; };
 		BF9D1FE422246E7800795031 /* sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = BF9D1FE322246E7800795031 /* sound.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BF05522E224EA38100E3020E /* PresentTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentTransition.swift; sourceTree = "<group>"; };
+		BF05522E224EA38100E3020E /* UpTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpTransition.swift; sourceTree = "<group>"; };
 		BF4A775A21452A4D008301CC /* MusicAppTransition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicAppTransition.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF4A775D21452A4D008301CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF4A775F21452A4D008301CC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		BF4A776221452A4D008301CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BF4A776421452A4F008301CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		BF4A776721452A4F008301CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF4A776921452A4F008301CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BF4A776F21452A75008301CC /* InteractiveTransition+Gestures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "InteractiveTransition+Gestures.swift"; sourceTree = "<group>"; };
 		BF4A777C21452EE8008301CC /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		BF53812622682F0900569F4A /* PresentaitionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentaitionController.swift; sourceTree = "<group>"; };
-		BF8F976F2270DFE900436C3A /* Driver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Driver.swift; sourceTree = "<group>"; };
 		BF96BEA821455196003382F9 /* ChevronView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChevronView.swift; sourceTree = "<group>"; };
 		BF9D1FE322246E7800795031 /* sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sound.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,29 +62,34 @@
 		BF4A775C21452A4D008301CC /* MusicAppTransition */ = {
 			isa = PBXGroup;
 			children = (
-				BF4A777521452B3A008301CC /* Transitions */,
+				BF7A2C37228583A7007E7E87 /* MainScene */,
+				BF7A2C38228583C2007E7E87 /* ModalScene */,
 				BF4A775D21452A4D008301CC /* AppDelegate.swift */,
-				BF4A775F21452A4D008301CC /* MainViewController.swift */,
-				BF4A777C21452EE8008301CC /* DetailsViewController.swift */,
 				BF4A776121452A4D008301CC /* Main.storyboard */,
 				BF4A776421452A4F008301CC /* Assets.xcassets */,
-				BF4A776621452A4F008301CC /* LaunchScreen.storyboard */,
-				BF9D1FE322246E7800795031 /* sound.wav */,
 				BF4A776921452A4F008301CC /* Info.plist */,
-				BF96BEA821455196003382F9 /* ChevronView.swift */,
 			);
 			path = MusicAppTransition;
 			sourceTree = "<group>";
 		};
-		BF4A777521452B3A008301CC /* Transitions */ = {
+		BF7A2C37228583A7007E7E87 /* MainScene */ = {
 			isa = PBXGroup;
 			children = (
-				BF4A776F21452A75008301CC /* InteractiveTransition+Gestures.swift */,
-				BF05522E224EA38100E3020E /* PresentTransition.swift */,
-				BF53812622682F0900569F4A /* PresentaitionController.swift */,
-				BF8F976F2270DFE900436C3A /* Driver.swift */,
+				BF4A775F21452A4D008301CC /* MainViewController.swift */,
 			);
-			path = Transitions;
+			path = MainScene;
+			sourceTree = "<group>";
+		};
+		BF7A2C38228583C2007E7E87 /* ModalScene */ = {
+			isa = PBXGroup;
+			children = (
+				BF4A777C21452EE8008301CC /* DetailsViewController.swift */,
+				BF96BEA821455196003382F9 /* ChevronView.swift */,
+				BF53812622682F0900569F4A /* PresentaitionController.swift */,
+				BF05522E224EA38100E3020E /* UpTransition.swift */,
+				BF9D1FE322246E7800795031 /* sound.wav */,
+			);
+			path = ModalScene;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,7 +150,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF4A776821452A4F008301CC /* LaunchScreen.storyboard in Resources */,
 				BF4A776521452A4F008301CC /* Assets.xcassets in Resources */,
 				BF4A776321452A4D008301CC /* Main.storyboard in Resources */,
 				BF9D1FE422246E7800795031 /* sound.wav in Resources */,
@@ -167,11 +165,9 @@
 			files = (
 				BF4A777D21452EE8008301CC /* DetailsViewController.swift in Sources */,
 				BF53812722682F0900569F4A /* PresentaitionController.swift in Sources */,
-				BF4A777021452A75008301CC /* InteractiveTransition+Gestures.swift in Sources */,
-				BF8F97702270DFE900436C3A /* Driver.swift in Sources */,
 				BF4A776021452A4D008301CC /* MainViewController.swift in Sources */,
 				BF96BEA921455196003382F9 /* ChevronView.swift in Sources */,
-				BF05522F224EA38100E3020E /* PresentTransition.swift in Sources */,
+				BF05522F224EA38100E3020E /* UpTransition.swift in Sources */,
 				BF4A775E21452A4D008301CC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -185,14 +181,6 @@
 				BF4A776221452A4D008301CC /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		BF4A776621452A4F008301CC /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BF4A776721452A4F008301CC /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

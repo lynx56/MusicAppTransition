@@ -22,8 +22,13 @@ class PresentationController: UIPresentationController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(dimmmingViewTapped))
         dimmingView.addGestureRecognizer(tap)
+        dimmingView.isUserInteractionEnabled = true
     }
     
+    override var shouldRemovePresentersView: Bool {
+        return true
+    }
+
     override var frameOfPresentedViewInContainerView: CGRect {
         guard let containerView = containerView else { return .zero }
         guard let provider = presentingViewController as? TopLimitationFrameProvider
@@ -38,45 +43,40 @@ class PresentationController: UIPresentationController {
     
     override func presentationTransitionWillBegin() {
         guard let containerView = containerView else { return }
-        
-        dimmingView.alpha = dimmingViewAlpha
+    
+        dimmingView.alpha = 1
         dimmingView.frame = containerView.frame
-        dimmingView.backgroundColor = UIColor.black.withAlphaComponent(0.2)
-        containerView.addSubview(dimmingView)
-        dimmingView.addSubview(presentedViewController.view)
-        
-        presentingViewController.transitionCoordinator?.animate(alongsideTransition: { [unowned self] _ in
-            self.dimmingView.alpha = self.dimmingView.alpha
-        }) { [unowned self] _ in
-            if self.isPresentingOnAnotherDimmedView {
-                self.dimmingView.backgroundColor = .clear
-                self.dimmingView.alpha = 1
-            }
+        dimmingView.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+        dimmingView.accessibilityIdentifier = "dimming"
+        if let snapshot = presentingViewController.view.snapshotView(afterScreenUpdates: false) {
+            snapshot.isUserInteractionEnabled = false
+            snapshot.tag = 100
+            containerView.addSubview(snapshot)
         }
+        containerView.addSubview(dimmingView)
         
     }
     
     override func dismissalTransitionWillBegin() {
         dimmingView.alpha = 1
+ 
         presentingViewController.transitionCoordinator?.animate(alongsideTransition: { [unowned self] _ in
             self.dimmingView.alpha = 0
         })
     }
-    
+
     override func dismissalTransitionDidEnd(_ completed: Bool) {
-        dimmingView.removeFromSuperview()
+        if completed {
+            dimmingView.removeFromSuperview()
+            containerView?.viewWithTag(100)?.removeFromSuperview()
+        } else {
+            dimmingView.alpha = 1
+        }
     }
-    
+
     @objc func dimmmingViewTapped(_ gesture: UITapGestureRecognizer) {
         guard gesture.state == .ended else { return }
-        presentingViewController.dismiss(animated: true, completion: nil)
-    }
-    
-    private var isPresentingOnAnotherDimmedView: Bool {
-        return presentingViewController.presentationController as? PresentationController != nil
-    }
-    
-    private var dimmingViewAlpha: CGFloat {
-        return isPresentingOnAnotherDimmedView ? 0 : 1
+        
+        presentedViewController.dismiss(animated: true, completion: nil)
     }
 }
