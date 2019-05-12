@@ -25,7 +25,6 @@ class UpTransition: NSObject, UIViewControllerInteractiveTransitioning, UIViewCo
             panGestureRecognizer?.addTarget(self, action: #selector(handlePan))
         }
     }
-    var animator : UIViewPropertyAnimator?
     
     enum State {
         case present
@@ -36,6 +35,7 @@ class UpTransition: NSObject, UIViewControllerInteractiveTransitioning, UIViewCo
     
     var state = State.present
     
+    private var animator : UIViewPropertyAnimator?
     @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
         let view = gesture.view!
         let translation = gesture.translation(in: view)
@@ -52,7 +52,6 @@ class UpTransition: NSObject, UIViewControllerInteractiveTransitioning, UIViewCo
     }
     
     func interruptibleAnimator(using transitionContext: UIViewControllerContextTransitioning) -> UIViewImplicitlyAnimating {
-        if let animator = self.animator { return animator }
         let animator = UIViewPropertyAnimator(duration: transitionDuration(using: transitionContext), curve: .linear)
         
         guard let fromViewController = transitionContext.viewController(forKey: .from), let fromView = transitionContext.view(forKey: .from) else {

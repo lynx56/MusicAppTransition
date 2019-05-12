@@ -83,7 +83,6 @@ extension ChevronViewController: UIViewControllerTransitioningDelegate {
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         transition.state = .presentWithAnimations(Animations(direct: self.chevronView.down, cancel: self.chevronView.neutral))
-        transition.animator = nil
         return transition
     }
     
@@ -93,7 +92,6 @@ extension ChevronViewController: UIViewControllerTransitioningDelegate {
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         transition.state = .dismissWithAnimations(Animations(direct: self.chevronView.neutral, cancel: self.chevronView.down))
-        transition.animator = nil
         return transition
     }
     
