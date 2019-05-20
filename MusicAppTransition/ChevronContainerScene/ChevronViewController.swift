@@ -66,12 +66,14 @@ class ChevronViewController: UIViewController {
     }
     
     @objc func pan(_ gesture: UIPanGestureRecognizer){
-        if gesture.state == .began  {
+        switch gesture.state {
+        case .began:
             wantsInteractive = true
             self.dismiss(animated: true, completion: nil)
-        }
-        if gesture.state == .ended {
+        case .ended, .cancelled, .failed:
             wantsInteractive = false
+        default:
+            break
         }
     }
 }
